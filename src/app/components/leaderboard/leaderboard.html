@@ -1,0 +1,48 @@
+<div class="leaderboard">
+    <div class="controls-container desktop-width">
+        <div class="refresh">
+            <label for="refresh">
+                Auto-Refresh:
+                <input class="checkbox" type="checkbox" name="radio" (change)="toggleRefresh($event)">
+            </label>
+            <label for="seconds">
+                every
+                <input class="seconds" type="number" name="seconds" min="5" max="3600" [(value)]="seconds">
+                seconds
+            </label>
+        </div>
+    </div>
+    <div class="add">
+        TODO: ADD ACTIVE TOURNAMENT
+    </div>
+    <table class="leaderboard-table desktop-width">
+        <thead>
+            <tr class="header">
+                <th class="number-row">Position</th>
+                <th>Player</th>
+                <th class="number-row">Round</th>
+                <th class="number-row">Overall</th>
+                <th class="number-row">Thru</th>
+                <th>Tee Time</th>
+                <th class="number-row">R1</th>
+                <th class="number-row">R2</th>
+                <th class="number-row">R3</th>
+                <th class="number-row">R4</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="state.tournamentData">
+            <tr *ngFor="let player of state.tournamentData.leaderboard.players" [ngClass]="{ 'is-cut': isCut(player) }">
+                <td>{{filterPosition(player)}}</td>
+                <td>{{player.player_bio.first_name}} {{player.player_bio.last_name}}</td>
+                <td [style.color]="setScoreColor(player.today)">{{filterScore(player.today)}}</td>
+                <td [style.color]="setScoreColor(player.total)">{{filterScore(player.total)}}</td>
+                <td>{{player.thru}}</td>
+                <td><span *ngIf="player.rounds[player.current_round - 1]">{{trimDate(player.rounds[player.current_round - 1].tee_time)}}</span></td>
+                <td>{{player.rounds[0].strokes}}</td>
+                <td>{{player.rounds[1].strokes}}</td>
+                <td>{{player.rounds[2].strokes}}</td>
+                <td>{{player.rounds[3].strokes}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

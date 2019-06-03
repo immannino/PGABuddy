@@ -1,0 +1,16 @@
+h1 {
+    color: var(--green);
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: var(--red);
+}
+
+.logo {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.logo > img {
+    height: 75px;
+    width: 75px;
+}
