@@ -8,12 +8,20 @@ import { PGAService } from '../lib/service/pga/pga.service';
 import { StateService } from '../lib/service/state/state.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
+import { ScoreColorPipe, TrimDatePipe, FilterPositionPipe, FilterScorePipe, IsCutPipe } from '../lib/utils/pga.pipes';
+import { AutoRefreshComponent } from './components/auto-refresh/auto-refresh.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    AutoRefreshComponent,
+    ScoreColorPipe,
+    TrimDatePipe,
+    FilterPositionPipe,
+    FilterScorePipe,
+    IsCutPipe
   ],
   imports: [
     BrowserModule,

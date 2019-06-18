@@ -1,0 +1,17 @@
+.controls-container {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.seconds {
+    text-align: center;
+}
+
+@media(min-width: 1000px) {
+    .desktop-width {
+        width: 80%;
+        margin: 0 auto;
+    }
+}

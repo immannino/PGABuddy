@@ -1,0 +1,13 @@
+<div class="controls-container desktop-width">
+    <div class="refresh">
+        <label for="refresh">
+            Auto-Refresh:
+            <input class="checkbox" type="checkbox" name="radio" (change)="toggleRefresh($event)">
+        </label>
+        <label for="seconds">
+            every
+            <input class="seconds" type="number" name="seconds" min="5" max="3600" [(value)]="seconds">
+            seconds
+        </label>
+    </div>
+</div>
