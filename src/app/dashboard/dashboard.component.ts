@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { PGAService } from '../../lib/service/pga/pga.service';
-import { StateService } from 'src/lib/service/state/state.service';
+import { StateService, State } from 'src/lib/service/state/state.service';
 import { CurrentTournament, TournamentData } from '../../lib/service/pga/pga.model';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
     selector: 'dashboard',
@@ -9,19 +10,27 @@ import { CurrentTournament, TournamentData } from '../../lib/service/pga/pga.mod
     styleUrls: [ './dashboard.scss' ]
 })
 export class DashboardComponent implements OnInit {
-    constructor(private pga: PGAService, private state: StateService) {}
+    state: State;
+
+    constructor(private pga: PGAService, private stateService: StateService) {
+        this.stateService.stateSubject.subscribe((state) => {
+            this.state = state;
+        });
+    }
 
     ngOnInit() {
+        this.state = this.stateService.getState();
+        
         this.pga.getCurrentTournamentId().subscribe((data: CurrentTournament) => {
-            this.state.updateState({
+            this.stateService.updateState({
                 currentMeta: data,
                 tournamentData: null
             });
 
             this.pga.getTournamentData(data.tid).subscribe((tournamentData: TournamentData) => {
-                const tempState = this.state.getState();
+                const tempState = this.stateService.getState();
 
-                this.state.updateState({
+                this.stateService.updateState({
                     ...tempState,
                     tournamentData: tournamentData
                 });

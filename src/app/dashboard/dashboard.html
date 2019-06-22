@@ -3,8 +3,18 @@
     <div class="title">pga buddy</div>
 </div>
 <div role="navigation" class="nav">
-    <span class="nav-item">Simple</span>
-    <span class="nav-item">Full</span>
-    <span class="nav-item">Tiger</span>
+    <span class="nav-item" [routerLink]="['/simple']">Simple</span>
+    <span class="nav-item" [routerLink]="['/detailed']">Full</span>
+    <span class="nav-item" [routerLink]="['/tiger']">Tiger</span>
 </div>
+<div class="tournament-meta" *ngIf="state.tournamentData">
+    <div>
+        {{state.tournamentData.leaderboard.tournament_name}} 
+    </div>
+    <div>
+        Round: {{state.tournamentData.leaderboard.current_round}} Status: 
+        {{state.tournamentData.leaderboard.round_state}}
+    </div>
+</div>
+<auto-refresh></auto-refresh>
 <router-outlet></router-outlet>

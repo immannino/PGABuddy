@@ -10,12 +10,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
 import { ScoreColorPipe, TrimDatePipe, FilterPositionPipe, FilterScorePipe, IsCutPipe } from '../lib/utils/pga.pipes';
 import { AutoRefreshComponent } from './components/auto-refresh/auto-refresh.component';
+import { TigerComponent } from './components/tiger/tiger.component';
+import { DetailedLeaderboardComponent } from './components/detailed-leaderboard/detailed-leaderboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     LeaderboardComponent,
+    TigerComponent,
+    DetailedLeaderboardComponent,
     AutoRefreshComponent,
     ScoreColorPipe,
     TrimDatePipe,

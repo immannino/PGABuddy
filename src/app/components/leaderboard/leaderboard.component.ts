@@ -8,7 +8,7 @@ import { StateService, State } from '../../../lib/service/state/state.service';
     styleUrls: [ './leaderboard.scss' ]
 })
 export class LeaderboardComponent implements OnInit {
-    constructor(private pga: PGAService, private stateService: StateService) {
+    constructor(private stateService: StateService) {
         this.stateService.stateSubject.subscribe((state) => {
             this.state = state;
         });

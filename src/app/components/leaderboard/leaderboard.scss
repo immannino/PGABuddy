@@ -31,16 +31,9 @@ td {
     background-color: #dddddd;
 }
 
-.tournament-meta {
-    width: 40%;
-    padding: 1em;
-    margin: 0 auto;
-    border: 1px solid var(--green);
-}
-
 @media(min-width: 1000px) {
     .desktop-width {
-        width: 80%;
+        width: 70%;
         margin: 0 auto;
     }
 
