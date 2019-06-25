@@ -27,4 +27,27 @@ export class IsCutPipe implements PipeTransform {
     transform = (player: Player): boolean => isCut(player.status);
 }
 
+@Pipe({ name: 'formatDate' })
+export class FormatDatePipe implements PipeTransform {
+    transform = (timestamp: string): string => {
+        const timeSegments = timestamp.split(':');
+        const hours = timeSegments[0];
+        const minutes = timeSegments[1];
+        const seconds = timeSegments[2];
+        let realHours = 0;
+        let amPm = '';
 
+        if (Number(hours) >= 12) {
+            amPm = 'PM';
+            realHours = Number(hours) % 12;
+
+            if (realHours === 0) realHours = 12;
+        } else {
+            amPm = 'AM';
+            realHours = Number(hours);
+        }
+
+        // return timestamp;
+        return `${realHours}:${minutes}:${seconds} ${amPm}`;
+    };
+}

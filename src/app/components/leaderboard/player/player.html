@@ -1,0 +1,24 @@
+<div class="container" [ngClass]="{ 'is-cut': (player | isCutPipe) }">
+    <div class="position">{{player | filterPositionText}}</div>
+    <div class="info-container">
+        <div class="title">{{player.player_bio.first_name}}&nbsp;{{player.player_bio.last_name}}</div>
+        <div class="stats">
+            <label for="total">
+                Total
+                <span name="total" class="data-item" [style.color]="player.total | scoreColor">{{ player.total | filterScoreText }}</span>
+            </label>
+            <label for="today">
+                Today
+                <span name="today" class="data-item" [style.color]="player.total | scoreColor">{{ player.today | filterScoreText }}</span>
+            </label>
+            <label for="thru">
+                Thru
+                <span name="thru" class="data-item">{{player.thru}}</span>
+            </label>
+            <label for="round">
+                Tee Time
+                <span name="round" class="data-item" *ngIf="player.rounds[player.current_round - 1]">{{ player.rounds[player.current_round - 1].tee_time | trimDatestring | formatDate}}</span>
+            </label>
+        </div>
+    </div>
+</div>

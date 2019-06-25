@@ -1,0 +1,55 @@
+.position {
+    grid-area: position;
+    align-self: center;
+    padding: 0.5em;
+    font-size: 25px;
+    text-align: center;
+}
+
+.title {
+    text-align: left;
+    font-size: 25px;
+    grid-area: title;
+    padding: 0.25em;
+}
+
+.stats {
+    text-align: left;
+    grid-area: stats;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+}
+
+.info-container {
+    padding: 0.5em;
+    grid-area: info;
+    // background-color: #f0f0f0;
+    margin: 0.25em 0;
+}
+
+.container {
+    // box-shadow: 2px 2px 5px 1px gray;
+    // border: 1px solid var(--green);
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 50px auto;
+    grid-template-areas: 'position info';
+    margin: 0 auto;
+}
+
+label {
+    font-size: 10px;
+    display: flex;
+    flex-flow: column-reverse;
+    text-align: center;
+    color: gray;
+}
+
+label > .data-item {
+    font-size: 16px;
+}
+
+.is-cut {
+    background-color: #dddddd;
+}

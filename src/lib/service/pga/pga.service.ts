@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { CurrentTournament, TournamentData } from './pga.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import * as data from './leaderboard-test.json';
 
 @Injectable()
 export class PGAService {
@@ -22,7 +23,9 @@ export class PGAService {
 
     getTournamentData(tournamentId: string): Observable<TournamentData> {
         let url: string = "https://statdata.pgatour.com/r/" + tournamentId + "/leaderboard-v2mini.json";
-
-        return this.http.get<TournamentData>(url);
+        return Observable.create((next) => {
+            next.next(data);
+        });
+        // return this.http.get<TournamentData>(this.data);
     }
 }

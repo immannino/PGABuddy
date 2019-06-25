@@ -21,20 +21,21 @@ export class DashboardComponent implements OnInit {
     ngOnInit() {
         this.state = this.stateService.getState();
         
-        this.pga.getCurrentTournamentId().subscribe((data: CurrentTournament) => {
-            this.stateService.updateState({
-                currentMeta: data,
-                tournamentData: null
-            });
+        // this.pga.getCurrentTournamentId().subscribe((data: CurrentTournament) => {
+        //     this.stateService.updateState({
+        //         currentMeta: data,
+        //         tournamentData: null
+        //     });
 
-            this.pga.getTournamentData(data.tid).subscribe((tournamentData: TournamentData) => {
+            this.pga.getTournamentData(null).subscribe((tournamentData: any) => {
+                console.log(tournamentData);
                 const tempState = this.stateService.getState();
 
                 this.stateService.updateState({
                     ...tempState,
-                    tournamentData: tournamentData
+                    tournamentData: tournamentData.default
                 });
             });
-        });
+        // });
     }
 }

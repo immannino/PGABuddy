@@ -1,24 +1,7 @@
 <div class="leaderboard" *ngIf="state.tournamentData">
-    <table class="leaderboard-table desktop-width">
-        <thead>
-            <tr class="header">
-                <th class="number-row">Position</th>
-                <th>Player</th>
-                <th class="number-row">Round</th>
-                <th class="number-row">Overall</th>
-                <th class="number-row">Thru</th>
-                <th>Tee Time</th>
-            </tr>
-        </thead>
-        <tbody *ngIf="state.tournamentData" class="scrollable">
-            <tr *ngFor="let player of state.tournamentData.leaderboard.players" [ngClass]="{ 'is-cut': (player | isCutPipe) }">
-                <td>{{player | filterPositionText}}</td>
-                <td >{{player.player_bio.first_name}} {{player.player_bio.last_name}}</td>
-                <td [style.color]="player.today | scoreColor">{{ player.today | filterScoreText }}</td>
-                <td [style.color]="player.total | scoreColor">{{ player.total | filterScoreText }}</td>
-                <td>{{player.thru}}</td>
-                <td><span *ngIf="player.rounds[player.current_round - 1]">{{ player.rounds[player.current_round - 1].tee_time | trimDatestring }}</span></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="leaderboard-table desktop-width">
+        <div class="" *ngIf="state.tournamentData">
+            <player *ngFor="let player of state.tournamentData.leaderboard.players" [player]="player"></player>
+        </div>
+    </div>
 </div>
